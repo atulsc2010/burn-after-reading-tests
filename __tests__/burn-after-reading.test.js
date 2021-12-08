@@ -1,6 +1,7 @@
 import { Builder, By, Key, until } from "selenium-webdriver";
 import { openChrome, openFirefox } from "./helpers/init-drivers.js";
 import fs from "fs";
+import path from "path";
 
 // burn after reading page Url- System Under Test
 const url = "https://www.altocumulus.it/pages/burn-after-reading/index.html";
@@ -203,6 +204,12 @@ describe("Scenario 4 - Unhappy path - When user submits a blank.", () => {
     );
 
     expect(validationErrors.length).toBe(0);
+
+    const screenshots = path.normalize("./screenshots");
+
+    if (!fs.existsSync(screenshots)) {
+      fs.mkdirSync(screenshots);
+    }
 
     //Save all screenshots
     await fs.writeFileSync(
