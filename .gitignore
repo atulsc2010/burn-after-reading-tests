@@ -1,3 +1,5 @@
+# Custom user folders to be ignored
+screenshots/
 # Logs
 logs
 *.log

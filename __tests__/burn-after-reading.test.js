@@ -9,8 +9,8 @@ const url = "https://www.altocumulus.it/pages/burn-after-reading/index.html";
 const guidPattern =
   /^[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[089ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
-//const browser = openChrome();
-const browser = openFirefox();
+const browser = openChrome();
+//const browser = openFirefox();
 
 // Open the Home page
 const pageLoad = async () => {
@@ -29,7 +29,7 @@ describe("Scenario 1 - Health Check - On initial load check for visual elements.
   test("1.1 That the Page title displayed", async () => {
     const title = await browser.findElement(By.css(".sidenav h4")).getText();
     expect(title).toContain("Burn After Reading");
-  }, 20000);
+  }, 60000);
 
   test("1.2 That important form elements on the form are present", async () => {
     const pastebin = await browser.findElement(By.css("#pastebin"));
@@ -46,7 +46,7 @@ describe("Scenario 1 - Health Check - On initial load check for visual elements.
     expect(await autoSuggestBtn.isDisplayed()).toBeTruthy(); // Button exists and displayed
     expect(await autoSuggestBtn.isEnabled()).toBeTruthy(); // Button is clickable
     expect(await autoSuggestBtn.getText()).toContain("Auto Suggest"); // Button has correct text label
-  }, 20000);
+  }, 60000);
 });
 
 describe("Scenario 2 - Happy path - send a new encrypted paste.", () => {
